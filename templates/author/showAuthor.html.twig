@@ -1,15 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Détails de l'auteur{% endblock %}
+{% block title %}Détails de {{ author.username }}{% endblock %}
 
 {% block body %}
-<h1>Nom de l'auteur : {{ author.username|upper }}</h1>
-
-<div>
-    <p><strong>Email :</strong> {{ author.email }}</p>
-    <p><strong>Nombre de livres :</strong> {{ author.nb_books }}</p>
-    <p><img src="{{ asset(author.picture) }}" alt="{{ author.username }}" width="150"></p>
-</div>
-
-<p><a href="{{ path('app_authors') }}">Retour à la liste</a></p>
+    <h1>Détails de l'auteur</h1>
+    
+    <div class="author-details">
+        <div class="row">
+            <div class="col-md-4">
+                {% if author.picture %}
+                    <img src="{{ asset(author.picture) }}" alt="{{ author.username }}" class="img-fluid rounded">
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+                <h2>{{ author.username|upper }}</h2>
+                <p><strong>Email :</strong> {{ author.email }}</p>
+                <p><strong>Nombre de livres :</strong> {{ author.nb_books }}</p>
+                <a href="{{ path('list_authors') }}" class="btn btn-secondary">Retour à la liste</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}

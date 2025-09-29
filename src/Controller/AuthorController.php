@@ -46,7 +46,7 @@ final class AuthorController extends AbstractController
 
     }
   
-   #[Route('/author/{id<\d+>}', name: 'author_details')]
+   #[Route('/author/{id}', name: 'author_details')]
    public function authorDetails(int $id): Response
    {
     $authors = [
